@@ -5,27 +5,112 @@
             <p-table [value]="cryptoCurrencies" [tableStyle]="{'min-width': '50rem'}">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th>id</th>
-                        <th>Cryptocurrency</th>
-                        <th>Price {{currency.toUpperCase()}}</th>
-                        <th>1h</th>
-                        <th>24h</th>
-                        <th>7d</th>
-                        <th>24h Volumen {{currency.toUpperCase()}}</th>
-                        <th>Market Cap {{currency.toUpperCase()}}</th>
+                        <th><strong> # </strong></th>
+                        <th><strong> Cryptocurrency </strong></th>
+                        <th><strong>
+                                <div style="text-align:end"> Price {{ currency.toUpperCase() }} </div>
+                            </strong></th>
+                        <th><strong>
+                                <div style="text-align:end"> 1h </div>
+                            </strong></th>
+                        <th><strong>
+                                <div style="text-align:end"> 24h </div>
+                            </strong></th>
+                        <th><strong>
+                                <div style="text-align:end"> 7d </div>
+                            </strong></th>
+                        <th><strong>
+                                <div style="text-align:end"> 24h Volumen {{ currency.toUpperCase() }} </div>
+                            </strong></th>
+                        <th><strong>
+                                <div style="text-align:end"> Market Cap {{ currency.toUpperCase() }} </div>
+                            </strong></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-cryptoCurrency>
                     <tr>
-                        <td>{{cryptoCurrency.market_cap_rank}}</td>
-                        <td><p-image src="{{cryptoCurrency.image}}" alt="Image" width="15"></p-image>
-                            {{cryptoCurrency.name}} {{cryptoCurrency.symbol.toUpperCase()}}</td>
-                        <td>{{cryptoCurrency.current_price | currency:'USD':'':'.0-5'}}</td>
-                        <td>{{cryptoCurrency.price_change_percentage_1h_in_currency | number:'.1-2'}}%</td>
-                        <td>{{cryptoCurrency.price_change_percentage_24h_in_currency | number:'.1-2'}}%</td>
-                        <td>{{cryptoCurrency.price_change_percentage_7d_in_currency | number:'.1-2'}}%</td>
-                        <td>{{cryptoCurrency.total_volume | currency:'USD':'':'.0-0'}}</td>
-                        <td>{{cryptoCurrency.market_cap | currency:'USD':'':'.0-0'}}</td>
+                        <td><strong> {{ cryptoCurrency.market_cap_rank }} </strong></td>
+
+                        <td><strong>
+                                <div>
+                                    <p-image src="{{cryptoCurrency.image}}" alt="Image" width="20" height="18"
+                                        class="mr-2"></p-image>
+                                    {{ cryptoCurrency.name }} {{ cryptoCurrency.symbol.toUpperCase() }}
+                                </div>
+                            </strong></td>
+
+                        <td><strong>
+                                <div style="text-align:end">
+                                    {{ cryptoCurrency.current_price | currency:'USD':'':'.0-5'
+                                    }}
+                                </div>
+                            </strong></td>
+
+                        <td><strong>
+                                <div
+                                    *ngIf="cryptoCurrency.price_change_percentage_1h_in_currency > 0; then thenBlock1h else elseBlock1h">
+                                </div>
+                                <ng-template #thenBlock1h>
+                                    <div style="text-align:end;color:#61b361">
+                                        {{ cryptoCurrency.price_change_percentage_1h_in_currency |
+                                        number:'.1-2' }}%
+                                    </div>
+                                </ng-template>
+                                <ng-template #elseBlock1h>
+                                    <div style="text-align:end;color:#f76262">
+                                        {{ cryptoCurrency.price_change_percentage_1h_in_currency |
+                                        number:'.1-2' }}%
+                                    </div>
+                                </ng-template>
+                            </strong></td>
+
+                        <td><strong>
+                                <div
+                                    *ngIf="cryptoCurrency.price_change_percentage_24h_in_currency > 0; then thenBlock24h else elseBlock24h">
+                                </div>
+                                <ng-template #thenBlock24h>
+                                    <div style="text-align:end;color:#61b361">
+                                        {{
+                                        cryptoCurrency.price_change_percentage_24h_in_currency | number:'.1-2' }}%
+                                    </div>
+                                </ng-template>
+                                <ng-template #elseBlock24h>
+                                    <div style="text-align:end;color:#f76262">
+                                        {{
+                                        cryptoCurrency.price_change_percentage_24h_in_currency | number:'.1-2' }}%
+                                    </div>
+                                </ng-template>
+                            </strong></td>
+
+                        <td><strong>
+                                <div
+                                    *ngIf="cryptoCurrency.price_change_percentage_7d_in_currency > 0; then thenBlock7d else elseBlock7d">
+                                </div>
+                                <ng-template #thenBlock7d>
+                                    <div style="text-align:end;color:#61b361">
+                                        {{cryptoCurrency.price_change_percentage_7d_in_currency |
+                                        number:'.1-2' }}%
+                                    </div>
+                                </ng-template>
+                                <ng-template #elseBlock7d>
+                                    <div style="text-align:end;color:#f76262">
+                                        {{cryptoCurrency.price_change_percentage_7d_in_currency |
+                                        number:'.1-2' }}%
+                                    </div>
+                                </ng-template>
+                            </strong></td>
+
+                        <td><strong>
+                                <div style="text-align:end"> {{ cryptoCurrency.total_volume |
+                                    currency:'USD':'':'.0-0' }}
+                                </div>
+                            </strong></td>
+
+                        <td><strong>
+                                <div style="text-align:end"> {{ cryptoCurrency.market_cap |
+                                    currency:'USD':'':'.0-0' }}
+                                </div>
+                            </strong></td>
                     </tr>
                 </ng-template>
             </p-table>
