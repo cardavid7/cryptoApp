@@ -7,7 +7,9 @@
                     <tr>
                         <th pSortableColumn="market_cap_rank"><strong> # </strong><p-sortIcon field="market_cap_rank"></p-sortIcon></th>
 
-                        <th pSortableColumn="name"><strong> Cryptocurrency </strong><p-sortIcon field="name"></p-sortIcon></th>
+                        <th pSortableColumn="name"><strong> Cryptocurrency </strong><p-sortIcon field="name"></p-sortIcon>
+                            <p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
+                        </th>
 
                         <th pSortableColumn="current_price">
                             <strong>
