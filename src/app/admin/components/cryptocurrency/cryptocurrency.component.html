@@ -52,8 +52,10 @@
 
                         <td><strong>
                                 <div>
-                                    <p-image src="{{cryptoCurrency.image}}" alt="{{cryptoCurrency.id}}" width="20" height="18" class="mr-2"></p-image>
-                                    {{ cryptoCurrency.name }} {{ cryptoCurrency.symbol.toUpperCase() }}
+                                    <span style="display: flex; align-items: center;">
+                                        <p-image src="{{cryptoCurrency.image}}" alt="{{cryptoCurrency.id}}" width="20" height="20" class="mr-2 mt-1"></p-image>
+                                        {{ cryptoCurrency.name }} {{ cryptoCurrency.symbol.toUpperCase() }}
+                                    </span>
                                 </div>
                             </strong></td>
 
