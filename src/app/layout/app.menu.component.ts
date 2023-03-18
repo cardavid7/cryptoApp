@@ -19,7 +19,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Cryptocurrencies', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
                 ]
-            },
+            }/*,
             {
                 label: 'Home',
                 items: [
@@ -77,7 +77,7 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/pages/empty']
                     },
                 ]
-            }
+            }*/
         ];
     }
 }
