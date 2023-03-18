@@ -10,6 +10,7 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { CryptoCurrenciesRoutingModule } from './cryptocurrency-routing.module';
 import { ImageModule } from 'primeng/image';
+import { ScrollTopModule } from 'primeng/scrolltop';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { ImageModule } from 'primeng/image';
         PanelMenuModule,
         ButtonModule,
         CryptoCurrenciesRoutingModule,
-        ImageModule
+        ImageModule,
+        ScrollTopModule
     ],
     declarations: [CryptoCurrencyComponent]
 })
