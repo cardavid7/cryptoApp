@@ -3,13 +3,6 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppLayoutModule } from './layout/app.layout.module';
-import { ProductService } from './demo/service/product.service';
-import { CountryService } from './demo/service/country.service';
-import { CustomerService } from './demo/service/customer.service';
-import { EventService } from './demo/service/event.service';
-import { IconService } from './demo/service/icon.service';
-import { NodeService } from './demo/service/node.service';
-import { PhotoService } from './demo/service/photo.service';
 import { CryptoCurrencyService } from './admin/service/coinGecko/cryptocurrency.service'
 import { ExchangeService } from './admin/service/coinGecko/exchange.service'
 
@@ -23,10 +16,7 @@ import { ExchangeService } from './admin/service/coinGecko/exchange.service'
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
-        CryptoCurrencyService,ExchangeService,
-
-        CountryService, CustomerService, EventService, IconService, NodeService,
-        PhotoService, ProductService
+        CryptoCurrencyService,ExchangeService
     ],
     bootstrap: [AppComponent]
 })

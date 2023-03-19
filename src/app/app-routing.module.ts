@@ -9,12 +9,9 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
                 path: '', component: AppLayoutComponent,
                 children: [
                     { path: '', loadChildren: () => import('./admin/components/cryptocurrencies/cryptocurrencies.module').then(m => m.CryptoCurrenciesModule) },
-                    { path: 'exchanges', loadChildren: () => import('./admin/components/exchanges/exchanges.module').then(m => m.ExchangesModule) },
-                    { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) }
+                    { path: 'exchanges', loadChildren: () => import('./admin/components/exchanges/exchanges.module').then(m => m.ExchangesModule) }
                 ]
             },
-            { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
-            { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
             { path: '**', redirectTo: '/notfound' },
         ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })
     ],
