@@ -19,13 +19,13 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     { label: 'Cryptocurrencies', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
                 ]
-            }/*,
-            {
-                label: 'Home',
-                items: [
-                    { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/dashboard'] }
-                ]
             },
+            {
+                label: 'Exchanges',
+                items: [
+                    { label: 'Exchanges', icon: 'pi pi-fw pi-home', routerLink: ['/exchanges'] }
+                ]
+            }/*,
             {
                 label: 'Pages',
                 icon: 'pi pi-fw pi-briefcase',

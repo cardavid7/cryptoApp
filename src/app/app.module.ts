@@ -11,6 +11,7 @@ import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
 import { CryptoCurrencyService } from './admin/service/coinGecko/cryptocurrency.service'
+import { ExchangeService } from './admin/service/coinGecko/exchange.service'
 
 @NgModule({
     declarations: [
@@ -22,7 +23,7 @@ import { CryptoCurrencyService } from './admin/service/coinGecko/cryptocurrency.
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
-        CryptoCurrencyService,
+        CryptoCurrencyService,ExchangeService,
 
         CountryService, CustomerService, EventService, IconService, NodeService,
         PhotoService, ProductService

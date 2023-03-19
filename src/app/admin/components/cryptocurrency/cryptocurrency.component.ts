@@ -20,9 +20,8 @@ export class CryptoCurrencyComponent implements OnInit {
 
     ngOnInit() {
         this.cryptoCurrencyService.getCryptoCurrencies(this.currency).subscribe(
-            cryptoCurrencies => {
-                this.cryptoCurrencies = cryptoCurrencies
-                this.cryptoCurrencies.sort(((a, b) => a.market_cap_rank - b.market_cap_rank));
+            cryptoCurrencies => { 
+                this.cryptoCurrencies = cryptoCurrencies 
             }
         );
     }

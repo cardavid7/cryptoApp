@@ -1,7 +1,7 @@
 <div class="grid">
-    <p-scrollTop></p-scrollTop>
     <div class="col-12">
         <div class="card">
+            <p-scrollTop></p-scrollTop>
             <h5>Cryptocurrency Prices by Market Cap</h5>
             <p>Top 100 of coins</p>
             <p-table [value]="cryptoCurrencies" [tableStyle]="{'min-width': '50rem'}">
@@ -103,5 +103,5 @@
             </p-table>
         </div>
     </div>
-    <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+    <p-scrollTop target="parent" [threshold]="400" icon="pi pi-arrow-up"></p-scrollTop>
 </div>
