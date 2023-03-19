@@ -5,11 +5,9 @@ import { CryptoCurrency } from '../../api/coinGecko/cryptocurrency';
 import { CryptoCurrencyService } from '../../service/coinGecko/cryptocurrency.service';
 
 @Component({
-    templateUrl: './cryptocurrency.component.html',
+    templateUrl: './cryptocurrencies.component.html',
 })
-export class CryptoCurrencyComponent implements OnInit {
-
-    items!: MenuItem[];
+export class CryptoCurrenciesComponent implements OnInit {
 
     cryptoCurrencies: CryptoCurrency[];
 
@@ -25,12 +23,4 @@ export class CryptoCurrencyComponent implements OnInit {
             }
         );
     }
-
-    makeValuePercent(value: string): string {
-
-        return "";
-    }
-
-
-
 }

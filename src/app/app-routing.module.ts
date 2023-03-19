@@ -8,7 +8,7 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
             {
                 path: '', component: AppLayoutComponent,
                 children: [
-                    { path: '', loadChildren: () => import('./admin/components/cryptocurrency/cryptocurrency.module').then(m => m.CryptoCurrencyModule) },
+                    { path: '', loadChildren: () => import('./admin/components/cryptocurrencies/cryptocurrencies.module').then(m => m.CryptoCurrenciesModule) },
                     { path: 'exchanges', loadChildren: () => import('./admin/components/exchanges/exchanges.module').then(m => m.ExchangesModule) },
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) }
                 ]

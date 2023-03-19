@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CryptoCurrencyComponent } from './cryptocurrency.component';
+import { CryptoCurrenciesComponent } from './cryptocurrencies.component';
 
 @NgModule({
     imports: [RouterModule.forChild([
-        { path: '', component: CryptoCurrencyComponent }
+        { path: '', component: CryptoCurrenciesComponent }
     ])],
     exports: [RouterModule]
 })
