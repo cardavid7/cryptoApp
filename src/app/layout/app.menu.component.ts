@@ -17,7 +17,8 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Cryptocurrencies',
                 items: [
-                    { label: 'Cryptocurrencies', icon: 'pi pi-fw pi-bitcoin', routerLink: ['/'] }
+                    { label: 'Cryptocurrencies', icon: 'pi pi-fw pi-money-bill', routerLink: ['/'] },
+                    { label: 'Coin Info', icon: 'pi pi-fw pi-bitcoin', routerLink: ['/cryptocurrencies/coin-info/'], routerLinkActiveOptions: { paths: 'subset', queryParams: 'ignored', matrixParams: 'ignored', fragment: 'ignored' } },
                 ]
             },
             {

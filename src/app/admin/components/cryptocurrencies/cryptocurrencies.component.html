@@ -48,6 +48,10 @@
                                 <div style="text-align:end"> Market Cap {{ currency.toUpperCase() }} <p-sortIcon field="market_cap"></p-sortIcon></div>
                             </strong>
                         </th>
+
+                        <th><strong>
+                            <div style="text-align:end"> Coin Info </div>
+                        </strong></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-cryptoCurrency>
@@ -58,7 +62,8 @@
                                 <div>
                                     <span style="display: flex; align-items: center;">
                                         <p-image src="{{cryptoCurrency.image}}" alt="{{cryptoCurrency.id}}" width="24" height="24" class="mr-2 mt-1"></p-image>
-                                        {{ cryptoCurrency.name }} {{ cryptoCurrency.symbol.toUpperCase() }}
+                                        <a href="{{cryptoCurrency.id}}" [routerLink]="['/cryptocurrencies/coin-info', cryptoCurrency.id]">
+                                        {{ cryptoCurrency.name }} {{ cryptoCurrency.symbol.toUpperCase() }}</a>
                                     </span>
                                 </div>
                             </strong></td>
@@ -98,6 +103,11 @@
                         <td><strong><div style="text-align:end"> {{ cryptoCurrency.total_volume | currency:'USD':'':'.0-0' }} </div></strong></td>
 
                         <td><strong><div style="text-align:end"> {{ cryptoCurrency.market_cap | currency:'USD':'':'.0-0' }} </div></strong></td>
+
+                        <td><strong><div style="text-align:end; align-items: center;">
+                            <a href="{{cryptoCurrency.id}}" [routerLink]="['/cryptocurrencies/coin-info', cryptoCurrency.id]">
+                            <i class="pi pi-info-circle" style="font-size: 1.5rem"></i></a>
+                        </div></strong></td>
                     </tr>
                 </ng-template>
             </p-table>
