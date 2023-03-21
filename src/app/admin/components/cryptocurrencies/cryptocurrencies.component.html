@@ -105,7 +105,7 @@
                         <td><strong><div style="text-align:end"> {{ cryptoCurrency.market_cap | currency:'USD':'':'.0-0' }} </div></strong></td>
 
                         <td><strong><div style="text-align:end; align-items: center;">
-                            <a href="{{cryptoCurrency.id}}" [routerLink]="['/cryptocurrencies/coin-info', cryptoCurrency.id]">
+                            <a href="cryptoCurrency.id" [routerLink]="['/cryptocurrencies/coin-info', cryptoCurrency.id]">
                             <i class="pi pi-info-circle" style="font-size: 1.5rem"></i></a>
                         </div></strong></td>
                     </tr>
