@@ -11,15 +11,15 @@ import { CryptoCurrencyService } from '../../../service/coinGecko/cryptocurrency
 })
 export class CoinInfoComponent implements OnInit {
 
-    idCoin: string;
+    idCoin: string = '';
     currency: string = 'usd';
-    crypto: CryptoCurrency;
-    coinInfo: CoinInfo;
+    crypto: CryptoCurrency = new CryptoCurrency();
+    coinInfo: CoinInfo = new CoinInfo();
 
     constructor(
-        private activatedRoute: ActivatedRoute, 
-        private router:Router,
-        private cryptoCurrencyService:CryptoCurrencyService) { }
+        private activatedRoute: ActivatedRoute,
+        private router: Router,
+        private cryptoCurrencyService: CryptoCurrencyService) { }
 
     ngOnInit() {
         this.activatedRoute.params.subscribe(params => {
@@ -27,11 +27,11 @@ export class CoinInfoComponent implements OnInit {
             if (id == undefined) {
                 this.router.navigateByUrl('/cryptocurrencies/coin-info/bitcoin');
                 this.idCoin = 'bitcoin';
-            }else{
+            } else {
                 this.idCoin = id;
             }
-            })
-        
+        })
+
         this.cryptoCurrencyService.getCryptoCurrenciesById(this.currency, this.idCoin).subscribe(
             crypto => { this.crypto = crypto }
         );

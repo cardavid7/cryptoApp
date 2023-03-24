@@ -8,7 +8,7 @@ import { ExchangeService } from '../../service/coinGecko/exchange.service';
 })
 export class ExchangesComponent implements OnInit {
 
-    exchanges: Exchange[];
+    exchanges: Exchange[] = [];
 
     constructor(public layoutService: LayoutService,
         public exchangeService: ExchangeService) { }
@@ -17,7 +17,9 @@ export class ExchangesComponent implements OnInit {
         this.exchangeService.getExchanges().subscribe(
             exchanges => {
                 this.exchanges = exchanges
-                this.exchanges.sort(((a, b) => a.trust_score_rank - b.trust_score_rank));
+                if (this.exchanges !== undefined) {
+                    this.exchanges.sort(((a, b) => a.trust_score_rank - b.trust_score_rank));
+                }
             }
         );
     }

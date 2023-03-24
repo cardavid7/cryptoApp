@@ -7,7 +7,7 @@ import { CryptoCurrencyService } from '../../service/coinGecko/cryptocurrency.se
 })
 export class CryptoCurrenciesComponent implements OnInit {
 
-    cryptoCurrencies: CryptoCurrency[];
+    cryptoCurrencies: CryptoCurrency[] = [];
 
     currency: string = "usd";
 
@@ -15,8 +15,8 @@ export class CryptoCurrenciesComponent implements OnInit {
 
     ngOnInit() {
         this.cryptoCurrencyService.getCryptoCurrencies(this.currency).subscribe(
-            cryptoCurrencies => { 
-                this.cryptoCurrencies = cryptoCurrencies 
+            cryptoCurrencies => {
+                this.cryptoCurrencies = cryptoCurrencies
             }
         );
     }
