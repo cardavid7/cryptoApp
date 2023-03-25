@@ -15,6 +15,8 @@ export class CoinInfoComponent implements OnInit {
     currency: string = 'usd';
     crypto: CryptoCurrency = new CryptoCurrency();
     coinInfo: CoinInfo = new CoinInfo();
+    valueProgressBar: number = 0;
+    valueProgressBarLife: number = 0;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -33,12 +35,18 @@ export class CoinInfoComponent implements OnInit {
         })
 
         this.cryptoCurrencyService.getCryptoCurrenciesById(this.currency, this.idCoin).subscribe(
-            crypto => { this.crypto = crypto }
+            crypto => {
+                this.crypto = crypto
+                this.valueProgressBar = (this.crypto.current_price - this.crypto.low_24h) / (this.crypto.high_24h - this.crypto.low_24h) * 100
+                this.valueProgressBarLife = (this.crypto.current_price - this.crypto.atl) / (this.crypto.ath - this.crypto.atl) * 100
+            }
         );
 
         this.cryptoCurrencyService.getCoinById(this.idCoin).subscribe(
             coinInfo => { this.coinInfo = coinInfo }
         );
+
+
 
     }
 }
