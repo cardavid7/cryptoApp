@@ -7,6 +7,8 @@ import { TagModule } from 'primeng/tag';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
     imports: [
@@ -16,7 +18,9 @@ import { ChipModule } from 'primeng/chip';
         TagModule,
         ProgressBarModule,
         DividerModule,
-        ChipModule
+        ChipModule,
+        DialogModule,
+        ButtonModule
     ],
     declarations: [CoinInfoComponent]
 })

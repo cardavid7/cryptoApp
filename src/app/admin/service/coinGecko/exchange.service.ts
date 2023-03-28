@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { map, Observable } from "rxjs";
+import { map, Observable, catchError, throwError } from "rxjs";
 import { Exchange } from "../../api/coinGecko/exchange";
 
 @Injectable()
@@ -14,7 +14,9 @@ export class ExchangeService {
     public getExchanges(): Observable<Exchange[]> {
 
         return this.http.get<Exchange[]>(this.url + this.exchanges).pipe(
-            
+            catchError(error => {
+                return throwError(() => "Service error, please try again later.");
+            })
         )
 
     }

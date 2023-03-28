@@ -9,6 +9,8 @@ import { ExchangeService } from '../../service/coinGecko/exchange.service';
 export class ExchangesComponent implements OnInit {
 
     exchanges: Exchange[] = [];
+    error: string = "";
+    display: boolean = false;
 
     constructor(public layoutService: LayoutService,
         public exchangeService: ExchangeService) { }
@@ -20,6 +22,10 @@ export class ExchangesComponent implements OnInit {
                 if (this.exchanges !== undefined) {
                     this.exchanges.sort(((a, b) => a.trust_score_rank - b.trust_score_rank));
                 }
+            },
+            error => {
+                this.error = error;
+                this.display = true;
             }
         );
     }

@@ -11,6 +11,9 @@ import { CryptoCurrencyService } from '../../../service/coinGecko/cryptocurrency
 })
 export class CoinInfoComponent implements OnInit {
 
+    error: string = "";
+    display: boolean = false;
+
     idCoin: string = '';
     currency: string = 'usd';
     crypto: CryptoCurrency = new CryptoCurrency();
@@ -39,6 +42,10 @@ export class CoinInfoComponent implements OnInit {
                 this.crypto = crypto
                 this.valueProgressBar = (this.crypto.current_price - this.crypto.low_24h) / (this.crypto.high_24h - this.crypto.low_24h) * 100
                 this.valueProgressBarLife = (this.crypto.current_price - this.crypto.atl) / (this.crypto.ath - this.crypto.atl) * 100
+            },
+            error => {
+                this.error = error;
+                this.display = true;
             }
         );
 

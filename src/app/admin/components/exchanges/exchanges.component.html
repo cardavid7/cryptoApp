@@ -1,3 +1,12 @@
+<p-dialog header="Error" [(visible)]="display" [modal]="true" showEffect="fade" [style]="{width: '30vw'}"
+    [breakpoints]="{'500px': '75vw'}">
+    <p class="line-height-3 m-0">
+        {{error}}
+    </p>
+    <ng-template pTemplate="footer">
+        <button pButton icon="pi pi-check" (click)="display=false" label="Ok" class="p-button-outlined"></button>
+    </ng-template>
+</p-dialog>
 <div class="grid">
     <div class="col-12">
         <div class="card">
@@ -7,74 +16,101 @@
             <p-table [value]="exchanges" [tableStyle]="{'min-width': '50rem'}">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th pSortableColumn="trust_score_rank"><strong> # </strong><p-sortIcon field="trust_score_rank"></p-sortIcon></th>
+                        <th pSortableColumn="trust_score_rank"><strong> # </strong><p-sortIcon
+                                field="trust_score_rank"></p-sortIcon></th>
 
                         <th pSortableColumn="name"><strong> Exchange </strong><p-sortIcon field="name"></p-sortIcon>
-                            <p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
+                            <p-columnFilter type="text" field="name" display="menu"
+                                placeholder="Search by name"></p-columnFilter>
                         </th>
 
                         <th pSortableColumn="trust_score"><strong>
-                                <div style="text-align:end"> Trust Score <p-sortIcon field="trust_score"></p-sortIcon></div>
+                                <div style="text-align:end"> Trust Score <p-sortIcon field="trust_score"></p-sortIcon>
+                                </div>
                             </strong></th>
 
                         <th pSortableColumn="country"><strong>
                                 <div style="text-align:end"> Country <p-sortIcon field="country"></p-sortIcon>
-                                <p-columnFilter type="text" field="country" display="menu" placeholder="Search by country"></p-columnFilter></div>
+                                    <p-columnFilter type="text" field="country" display="menu"
+                                        placeholder="Search by country"></p-columnFilter>
+                                </div>
                             </strong></th>
 
                         <th pSortableColumn="year_established"><strong>
-                                <div style="text-align:end"> Established Year <p-sortIcon field="year_established"></p-sortIcon></div>
+                                <div style="text-align:end"> Established Year <p-sortIcon
+                                        field="year_established"></p-sortIcon></div>
                             </strong></th>
 
                         <th pSortableColumn="trade_volume_24h_btc"><strong>
-                                <div style="text-align:end"> Volume Trade 24h-BTC <p-sortIcon field="trade_volume_24h_btc"></p-sortIcon></div>
+                                <div style="text-align:end"> Volume Trade 24h-BTC <p-sortIcon
+                                        field="trade_volume_24h_btc"></p-sortIcon></div>
                             </strong></th>
-                        
+
                         <th><strong>
-                            <div style="text-align:end"> Link To Exchange </div>
-                        </strong></th>
+                                <div style="text-align:end"> Link To Exchange </div>
+                            </strong></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-exchange>
                     <tr>
                         <td><strong> {{ exchange.trust_score_rank }} </strong></td>
 
-                        <td><strong><div>
+                        <td><strong>
+                                <div>
                                     <span style="display: flex; align-items: center;">
-                                        <p-image src="{{exchange.image}}" alt="{{exchange.id}}" width="24" height="24" class="mr-2 mt-1"></p-image>
+                                        <p-image src="{{exchange.image}}" alt="{{exchange.id}}" width="24" height="24"
+                                            class="mr-2 mt-1"></p-image>
                                         {{ exchange.name }}
                                     </span>
-                                </div></strong></td>
+                                </div>
+                            </strong></td>
 
                         <td><strong>
-                            <div *ngIf="exchange.trust_score > 6 ; then thenBlockT else elseBlockT"></div>
-                            <ng-template #thenBlockT>
-                                <div style="text-align:end"><p-tag styleClass="mr-2" icon="pi pi-check" severity="success" value="{{exchange.trust_score}}" [rounded]="true"></p-tag></div>
-                            </ng-template>
-                            <ng-template #elseBlockT>
-                                <div style="text-align:end"><p-tag styleClass="mr-2" icon="pi pi-exclamation-triangle" severity="warning" value="{{exchange.trust_score}}" [rounded]="true"></p-tag></div>
-                            </ng-template>
-                        </strong></td>
-
-                        <td><strong><div style="text-align:end"> {{ exchange.country }}</div></strong></td>
-
-                        <td><strong><div style="text-align:end"> {{ exchange.year_established }}</div></strong></td>
+                                <div *ngIf="exchange.trust_score > 6 ; then thenBlockT else elseBlockT"></div>
+                                <ng-template #thenBlockT>
+                                    <div style="text-align:end"><p-tag styleClass="mr-2" icon="pi pi-check"
+                                            severity="success" value="{{exchange.trust_score}}"
+                                            [rounded]="true"></p-tag></div>
+                                </ng-template>
+                                <ng-template #elseBlockT>
+                                    <div style="text-align:end"><p-tag styleClass="mr-2"
+                                            icon="pi pi-exclamation-triangle" severity="warning"
+                                            value="{{exchange.trust_score}}" [rounded]="true"></p-tag></div>
+                                </ng-template>
+                            </strong></td>
 
                         <td><strong>
-                            <div style="text-align:end;">{{ exchange.trade_volume_24h_btc | currency:'USD':'':'.0-0' }}</div>
-                        </strong></td>
+                                <div style="text-align:end"> {{ exchange.country }}</div>
+                            </strong></td>
 
-                        <td><strong><div style="text-align:end; align-items: center;">
-                            <div *ngIf="exchange.url == 'https://r.kraken.com/c/2223866/687155/10583'; then thenBlock else elseBlock"></div>
-                                <ng-template #thenBlock>
-                                    <a href="https://www.kraken.com/" target="_blank"><i class="pi pi-external-link" pTooltip="https://www.kraken.com/" tooltipPosition="left" style="font-size: 1.5rem"></i></a>
-                                </ng-template>
-                                <ng-template #elseBlock>
-                                    <a href="{{exchange.url}}" target="_blank"><i class="pi pi-external-link" pTooltip="{{exchange.url}}" tooltipPosition="left" style="font-size: 1.5rem"></i></a>
-                                </ng-template>
-                        </div></strong></td>
-                        
-                        
+                        <td><strong>
+                                <div style="text-align:end"> {{ exchange.year_established }}</div>
+                            </strong></td>
+
+                        <td><strong>
+                                <div style="text-align:end;">{{ exchange.trade_volume_24h_btc | currency:'USD':'':'.0-0'
+                                    }}</div>
+                            </strong></td>
+
+                        <td><strong>
+                                <div style="text-align:end; align-items: center;">
+                                    <div
+                                        *ngIf="exchange.url == 'https://r.kraken.com/c/2223866/687155/10583'; then thenBlock else elseBlock">
+                                    </div>
+                                    <ng-template #thenBlock>
+                                        <a href="https://www.kraken.com/" target="_blank"><i class="pi pi-external-link"
+                                                pTooltip="https://www.kraken.com/" tooltipPosition="left"
+                                                style="font-size: 1.5rem"></i></a>
+                                    </ng-template>
+                                    <ng-template #elseBlock>
+                                        <a href="{{exchange.url}}" target="_blank"><i class="pi pi-external-link"
+                                                pTooltip="{{exchange.url}}" tooltipPosition="left"
+                                                style="font-size: 1.5rem"></i></a>
+                                    </ng-template>
+                                </div>
+                            </strong></td>
+
+
                     </tr>
                 </ng-template>
             </p-table>

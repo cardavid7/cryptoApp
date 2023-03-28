@@ -14,6 +14,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { TooltipModule } from 'primeng/tooltip';
 import { TagModule } from 'primeng/tag';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
         ScrollTopModule,
         TooltipModule,
         TagModule,
-        ProgressBarModule
+        ProgressBarModule,
+        DialogModule
     ],
     declarations: [ExchangesComponent]
 })

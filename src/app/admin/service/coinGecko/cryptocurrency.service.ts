@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { map, Observable } from "rxjs";
+import { map, Observable, catchError, throwError } from "rxjs";
 import { CryptoCurrency } from "../../api/coinGecko/cryptocurrency";
 import { CoinInfo } from "../../api/coinGecko/coinInfo";
 
@@ -25,6 +25,13 @@ export class CryptoCurrencyService {
 
         return this.http.get<CryptoCurrency[]>(this.url + this.coins + this.markets, { params: httpParams }).pipe(
             map((response: any) => response as CryptoCurrency[]),
+            catchError(error => {
+                //console.log(error.status);
+                //console.log(error.message);
+                //console.log(error.error);
+                //console.log(error.error.error);
+                return throwError(() => "Service error, please try again later.");
+            })
         )
     }
 
@@ -38,6 +45,9 @@ export class CryptoCurrencyService {
         return this.http.get<CryptoCurrency[]>(this.url + this.coins + this.markets, { params: httpParams }).pipe(
             map((response: CryptoCurrency[]) => {
                 return response[0];
+            }),
+            catchError(error => {
+                return throwError(() => "Service error, please try again later.");
             })
         )
     }
@@ -53,6 +63,10 @@ export class CryptoCurrencyService {
         httpParams = httpParams.set('developer_data', false);
         httpParams = httpParams.set('sparkline', false);
 
-        return this.http.get<CoinInfo>(this.url + this.coins + '/' + idCoin, { params: httpParams })
+        return this.http.get<CoinInfo>(this.url + this.coins + '/' + idCoin, { params: httpParams }).pipe(
+            catchError(error => {
+                return throwError(() => "Service error, please try again later.");
+            })
+        )
     }
 }

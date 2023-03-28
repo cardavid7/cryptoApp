@@ -1,3 +1,12 @@
+<p-dialog header="Error" [(visible)]="display" [modal]="true" showEffect="fade" [style]="{width: '30vw'}"
+    [breakpoints]="{'500px': '75vw'}">
+    <p class="line-height-3 m-0">
+        {{error}}
+    </p>
+    <ng-template pTemplate="footer">
+        <button pButton icon="pi pi-check" (click)="display=false" label="Ok" class="p-button-outlined"></button>
+    </ng-template>
+</p-dialog>
 <div class="grid">
     <div class="col-12">
         <div class="card">
@@ -7,51 +16,60 @@
             <p-table [value]="cryptoCurrencies" [tableStyle]="{'min-width': '50rem'}">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th pSortableColumn="market_cap_rank"><strong> # </strong><p-sortIcon field="market_cap_rank"></p-sortIcon></th>
+                        <th pSortableColumn="market_cap_rank"><strong> # </strong><p-sortIcon
+                                field="market_cap_rank"></p-sortIcon></th>
 
-                        <th pSortableColumn="name"><strong> Cryptocurrency </strong><p-sortIcon field="name"></p-sortIcon>
-                            <p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
+                        <th pSortableColumn="name"><strong> Cryptocurrency </strong><p-sortIcon
+                                field="name"></p-sortIcon>
+                            <p-columnFilter type="text" field="name" display="menu"
+                                placeholder="Search by name"></p-columnFilter>
                         </th>
 
                         <th pSortableColumn="current_price">
                             <strong>
-                                <div style="text-align:end"> Price {{ currency.toUpperCase() }} <p-sortIcon field="current_price"></p-sortIcon></div>
+                                <div style="text-align:end"> Price {{ currency.toUpperCase() }} <p-sortIcon
+                                        field="current_price"></p-sortIcon></div>
                             </strong>
                         </th>
 
                         <th pSortableColumn="price_change_percentage_1h_in_currency">
                             <strong>
-                                <div style="text-align:end"> 1h <p-sortIcon field="price_change_percentage_1h_in_currency"></p-sortIcon></div>
+                                <div style="text-align:end"> 1h <p-sortIcon
+                                        field="price_change_percentage_1h_in_currency"></p-sortIcon></div>
                             </strong>
                         </th>
 
                         <th pSortableColumn="price_change_percentage_24h_in_currency">
                             <strong>
-                                <div style="text-align:end"> 24h <p-sortIcon field="price_change_percentage_24h_in_currency"></p-sortIcon></div>
+                                <div style="text-align:end"> 24h <p-sortIcon
+                                        field="price_change_percentage_24h_in_currency"></p-sortIcon></div>
                             </strong>
                         </th>
 
                         <th pSortableColumn="price_change_percentage_7d_in_currency">
                             <strong>
-                                <div style="text-align:end"> 7d <p-sortIcon field="price_change_percentage_7d_in_currency"></p-sortIcon></div>
+                                <div style="text-align:end"> 7d <p-sortIcon
+                                        field="price_change_percentage_7d_in_currency"></p-sortIcon></div>
                             </strong>
                         </th>
 
                         <th pSortableColumn="total_volume">
                             <strong>
-                                <div style="text-align:end"> 24h Volumen {{ currency.toUpperCase() }} <p-sortIcon field="total_volume"></p-sortIcon></div>
+                                <div style="text-align:end"> 24h Volumen {{ currency.toUpperCase() }} <p-sortIcon
+                                        field="total_volume"></p-sortIcon></div>
                             </strong>
                         </th>
 
                         <th pSortableColumn="market_cap">
                             <strong>
-                                <div style="text-align:end"> Market Cap {{ currency.toUpperCase() }} <p-sortIcon field="market_cap"></p-sortIcon></div>
+                                <div style="text-align:end"> Market Cap {{ currency.toUpperCase() }} <p-sortIcon
+                                        field="market_cap"></p-sortIcon></div>
                             </strong>
                         </th>
 
                         <th><strong>
-                            <div style="text-align:end"> Coin Info </div>
-                        </strong></th>
+                                <div style="text-align:end"> Coin Info </div>
+                            </strong></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-cryptoCurrency>
@@ -61,53 +79,79 @@
                         <td><strong>
                                 <div>
                                     <span style="display: flex; align-items: center;">
-                                        <p-image src="{{cryptoCurrency.image}}" alt="{{cryptoCurrency.id}}" width="24" height="24" class="mr-2 mt-1"></p-image>
-                                        <a href="{{cryptoCurrency.id}}" [routerLink]="['/cryptocurrencies/coin-info', cryptoCurrency.id]">
-                                        {{ cryptoCurrency.name }} {{ cryptoCurrency.symbol.toUpperCase() }}</a>
+                                        <p-image src="{{cryptoCurrency.image}}" alt="{{cryptoCurrency.id}}" width="24"
+                                            height="24" class="mr-2 mt-1"></p-image>
+                                        <a href="{{cryptoCurrency.id}}"
+                                            [routerLink]="['/cryptocurrencies/coin-info', cryptoCurrency.id]">
+                                            {{ cryptoCurrency.name }} {{ cryptoCurrency.symbol.toUpperCase() }}</a>
                                     </span>
                                 </div>
                             </strong></td>
 
-                        <td><strong><div style="text-align:end"> {{ cryptoCurrency.current_price | currency:'USD':'':'.0-10' }} </div></strong></td>
+                        <td><strong>
+                                <div style="text-align:end"> {{ cryptoCurrency.current_price | currency:'USD':'':'.0-10'
+                                    }} </div>
+                            </strong></td>
 
                         <td><strong>
-                                <div *ngIf="cryptoCurrency.price_change_percentage_1h_in_currency > 0; then thenBlock1h else elseBlock1h"></div>
+                                <div
+                                    *ngIf="cryptoCurrency.price_change_percentage_1h_in_currency > 0; then thenBlock1h else elseBlock1h">
+                                </div>
                                 <ng-template #thenBlock1h>
-                                    <div style="text-align:end;color:#16c784">{{ cryptoCurrency.price_change_percentage_1h_in_currency | number:'.1-2' }}%</div>
+                                    <div style="text-align:end;color:#16c784">{{
+                                        cryptoCurrency.price_change_percentage_1h_in_currency | number:'.1-2' }}%</div>
                                 </ng-template>
                                 <ng-template #elseBlock1h>
-                                    <div style="text-align:end;color:#ea3943">{{ cryptoCurrency.price_change_percentage_1h_in_currency | number:'.1-2' }}%</div>
+                                    <div style="text-align:end;color:#ea3943">{{
+                                        cryptoCurrency.price_change_percentage_1h_in_currency | number:'.1-2' }}%</div>
                                 </ng-template>
                             </strong></td>
 
                         <td><strong>
-                                <div *ngIf="cryptoCurrency.price_change_percentage_24h_in_currency > 0; then thenBlock24h else elseBlock24h"></div>
+                                <div
+                                    *ngIf="cryptoCurrency.price_change_percentage_24h_in_currency > 0; then thenBlock24h else elseBlock24h">
+                                </div>
                                 <ng-template #thenBlock24h>
-                                    <div style="text-align:end;color:#16c784">{{ cryptoCurrency.price_change_percentage_24h_in_currency | number:'.1-2' }}%</div>
+                                    <div style="text-align:end;color:#16c784">{{
+                                        cryptoCurrency.price_change_percentage_24h_in_currency | number:'.1-2' }}%</div>
                                 </ng-template>
                                 <ng-template #elseBlock24h>
-                                    <div style="text-align:end;color:#ea3943">{{ cryptoCurrency.price_change_percentage_24h_in_currency | number:'.1-2' }}%</div>
+                                    <div style="text-align:end;color:#ea3943">{{
+                                        cryptoCurrency.price_change_percentage_24h_in_currency | number:'.1-2' }}%</div>
                                 </ng-template>
                             </strong></td>
 
                         <td><strong>
-                                <div *ngIf="cryptoCurrency.price_change_percentage_7d_in_currency > 0; then thenBlock7d else elseBlock7d"></div>
+                                <div
+                                    *ngIf="cryptoCurrency.price_change_percentage_7d_in_currency > 0; then thenBlock7d else elseBlock7d">
+                                </div>
                                 <ng-template #thenBlock7d>
-                                    <div style="text-align:end;color:#16c784">{{ cryptoCurrency.price_change_percentage_7d_in_currency | number:'.1-2' }}%</div>
+                                    <div style="text-align:end;color:#16c784">{{
+                                        cryptoCurrency.price_change_percentage_7d_in_currency | number:'.1-2' }}%</div>
                                 </ng-template>
                                 <ng-template #elseBlock7d>
-                                    <div style="text-align:end;color:#ea3943">{{ cryptoCurrency.price_change_percentage_7d_in_currency | number:'.1-2' }}%</div>
+                                    <div style="text-align:end;color:#ea3943">{{
+                                        cryptoCurrency.price_change_percentage_7d_in_currency | number:'.1-2' }}%</div>
                                 </ng-template>
                             </strong></td>
 
-                        <td><strong><div style="text-align:end"> {{ cryptoCurrency.total_volume | currency:'USD':'':'.0-0' }} </div></strong></td>
+                        <td><strong>
+                                <div style="text-align:end"> {{ cryptoCurrency.total_volume | currency:'USD':'':'.0-0'
+                                    }} </div>
+                            </strong></td>
 
-                        <td><strong><div style="text-align:end"> {{ cryptoCurrency.market_cap | currency:'USD':'':'.0-0' }} </div></strong></td>
+                        <td><strong>
+                                <div style="text-align:end"> {{ cryptoCurrency.market_cap | currency:'USD':'':'.0-0' }}
+                                </div>
+                            </strong></td>
 
-                        <td><strong><div style="text-align:end; align-items: center;">
-                            <a href="cryptoCurrency.id" [routerLink]="['/cryptocurrencies/coin-info', cryptoCurrency.id]">
-                            <i class="pi pi-info-circle" style="font-size: 1.5rem"></i></a>
-                        </div></strong></td>
+                        <td><strong>
+                                <div style="text-align:end; align-items: center;">
+                                    <a href="cryptoCurrency.id"
+                                        [routerLink]="['/cryptocurrencies/coin-info', cryptoCurrency.id]">
+                                        <i class="pi pi-info-circle" style="font-size: 1.5rem"></i></a>
+                                </div>
+                            </strong></td>
                     </tr>
                 </ng-template>
             </p-table>

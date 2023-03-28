@@ -10,6 +10,8 @@ export class CryptoCurrenciesComponent implements OnInit {
     cryptoCurrencies: CryptoCurrency[] = [];
 
     currency: string = "usd";
+    error: string = "";
+    display: boolean = false;
 
     constructor(public cryptoCurrencyService: CryptoCurrencyService) { }
 
@@ -17,6 +19,10 @@ export class CryptoCurrenciesComponent implements OnInit {
         this.cryptoCurrencyService.getCryptoCurrencies(this.currency).subscribe(
             cryptoCurrencies => {
                 this.cryptoCurrencies = cryptoCurrencies
+            },
+            error => {
+                this.error = error
+                this.display = true;
             }
         );
     }
