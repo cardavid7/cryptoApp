@@ -11,15 +11,18 @@ import { CryptoCurrencyService } from '../../../service/coinGecko/cryptocurrency
 })
 export class CoinInfoComponent implements OnInit {
 
-    error: string = "";
+    error: string = '';
     display: boolean = false;
 
     idCoin: string = '';
     currency: string = 'usd';
     crypto: CryptoCurrency = new CryptoCurrency();
     coinInfo: CoinInfo = new CoinInfo();
+
     valueProgressBar: number = 0;
     valueProgressBarLife: number = 0;
+
+    homepage: string[] = [];
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -50,7 +53,19 @@ export class CoinInfoComponent implements OnInit {
         );
 
         this.cryptoCurrencyService.getCoinById(this.idCoin).subscribe(
-            coinInfo => { this.coinInfo = coinInfo }
+            coinInfo => {
+                this.coinInfo = coinInfo
+
+                if (this.coinInfo.links?.homepage !== undefined) {
+                    if (this.coinInfo.links?.homepage[0].length > 0) {
+                        for (let value in this.coinInfo.links.homepage) {
+                            if (this.coinInfo.links.homepage[value].length > 0) {
+                                this.homepage.push(this.coinInfo.links.homepage[value]);
+                            }
+                        }
+                    }
+                }
+            }
         );
 
 

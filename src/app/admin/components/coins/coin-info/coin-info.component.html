@@ -29,8 +29,7 @@
 
             <div class="flex mb-3">
                 <span class="mt-1 mr-2">
-                    <h1>{{crypto.current_price | currency:'
-                        ':'':'.0-10'}}</h1>
+                    <h1>{{crypto.current_price | currency:'':'':'.0-10'}}</h1>
                 </span>
                 <div *ngIf="crypto.price_change_percentage_24h_in_currency > 0; then thenBlock else elseBlock">
                 </div>
@@ -52,37 +51,36 @@
                 <div *ngIf="crypto.price_change_24h > 0; then thenBlock24pch else elseBlock24pch">
                 </div>
                 <ng-template #thenBlock24pch>
-                    <div style="text-align:end;color:#16c784"><b>{{
-                            crypto.price_change_24h | currency:'USD':'':'.0-10' }}</b></div>
+                    <div style="text-align:end;color:#16c784"><b>{{crypto.price_change_24h | currency:'USD':'':'.0-10'
+                            }}</b></div>
                 </ng-template>
                 <ng-template #elseBlock24pch>
-                    <div style="text-align:end;color:#ea3943"><b>{{
-                            crypto.price_change_24h | currency:'USD':'':'.0-10' }}</b></div>
+                    <div style="text-align:end;color:#ea3943"><b>{{crypto.price_change_24h | currency:'USD':'':'.0-10'
+                            }}</b></div>
                 </ng-template>
             </div>
             <div class="flex justify-content-between mb-3">
                 <span>24h market cap change</span>
-                <div *ngIf="crypto.market_cap_change_24h > 0; then thenBlock24mch else elseBlock24mch">
+                <div *ngIf="crypto.market_cap_change_24h > 0; then thenBlock24mcch else elseBlock24mcch">
                 </div>
-                <ng-template #thenBlock24mch>
-                    <div style="text-align:end;color:#16c784"><b>{{
-                            crypto.market_cap_change_24h | currency:'USD':'':'.0-10' }}</b></div>
+                <ng-template #thenBlock24mcch>
+                    <div style="text-align:end;color:#16c784"><b>{{crypto.market_cap_change_24h |
+                            currency:'USD':'':'.0-10'
+                            }}</b></div>
                 </ng-template>
-                <ng-template #elseBlock24mch>
-                    <div style="text-align:end;color:#ea3943"><b>{{
-                            crypto.market_cap_change_24h | currency:'USD':'':'.0-10' }}</b></div>
+                <ng-template #elseBlock24mcch>
+                    <div style="text-align:end;color:#ea3943"><b>{{crypto.market_cap_change_24h |
+                            currency:'USD':'':'.0-10'
+                            }}</b></div>
                 </ng-template>
             </div>
-
-            <p-divider></p-divider>
+            <br>
             <div class="mb-3">
-                <p style="text-align: center;">range 24h</p>
+                <div style="text-align:center"><b>{{valueProgressBar | number:'.1-2'}}%</b></div>
                 <p-progressBar [style]="{ height: '10px' }" [value]="valueProgressBar"
                     [showValue]="false"></p-progressBar>
-                <p style="float: left">Low: <b>{{crypto.low_24h | currency:'
-                        ':'':'.0-10'}}</b></p>
-                <p style="float: right">High: <b>{{crypto.high_24h | currency:'
-                        ':'':'.0-10'}}</b></p>
+                <p style="float: left">Low 24h: <b>{{crypto.low_24h | currency:'':'':'.0-10'}}</b></p>
+                <p style="float: right">High 24h: <b>{{crypto.high_24h | currency:'':'':'.0-10'}}</b></p>
             </div>
         </div>
     </div>
@@ -92,13 +90,11 @@
                 <span>Percentage 1h</span>
                 <div *ngIf="crypto.price_change_percentage_1h_in_currency > 0; then thenBlock1h else elseBlock1h"></div>
                 <ng-template #thenBlock1h>
-                    <div style="text-align:end;color:#16c784"><b>{{
-                            crypto.price_change_percentage_1h_in_currency |
+                    <div style="text-align:end;color:#16c784"><b>{{crypto.price_change_percentage_1h_in_currency |
                             number:'.1-2' }} %</b></div>
                 </ng-template>
                 <ng-template #elseBlock1h>
-                    <div style="text-align:end;color:#ea3943"><b>{{
-                            crypto.price_change_percentage_1h_in_currency |
+                    <div style="text-align:end;color:#ea3943"><b>{{crypto.price_change_percentage_1h_in_currency |
                             number:'.1-2' }} %</b></div>
                 </ng-template>
             </div>
@@ -107,13 +103,11 @@
                 <div *ngIf="crypto.price_change_percentage_24h_in_currency > 0; then thenBlock24h else elseBlock24h">
                 </div>
                 <ng-template #thenBlock24h>
-                    <div style="text-align:end;color:#16c784"><b>{{
-                            crypto.price_change_percentage_24h_in_currency |
+                    <div style="text-align:end;color:#16c784"><b>{{crypto.price_change_percentage_24h_in_currency |
                             number:'.1-2' }} %</b></div>
                 </ng-template>
                 <ng-template #elseBlock24h>
-                    <div style="text-align:end;color:#ea3943"><b>{{
-                            crypto.price_change_percentage_24h_in_currency |
+                    <div style="text-align:end;color:#ea3943"><b>{{crypto.price_change_percentage_24h_in_currency |
                             number:'.1-2' }} %</b></div>
                 </ng-template>
             </div>
@@ -122,13 +116,11 @@
                 <div *ngIf="crypto.price_change_percentage_7d_in_currency > 0; then thenBlock7d else elseBlock7d">
                 </div>
                 <ng-template #thenBlock7d>
-                    <div style="text-align:end;color:#16c784"><b>{{
-                            crypto.price_change_percentage_7d_in_currency |
+                    <div style="text-align:end;color:#16c784"><b>{{crypto.price_change_percentage_7d_in_currency |
                             number:'.1-2' }} %</b></div>
                 </ng-template>
                 <ng-template #elseBlock7d>
-                    <div style="text-align:end;color:#ea3943"><b>{{
-                            crypto.price_change_percentage_7d_in_currency |
+                    <div style="text-align:end;color:#ea3943"><b>{{crypto.price_change_percentage_7d_in_currency |
                             number:'.1-2' }} %</b></div>
                 </ng-template>
             </div>
@@ -165,28 +157,36 @@
     <div class="col-12 lg:col-6 xl:col-4">
         <div class="card mb-0">
             <div class="flex justify-content-between mb-3">
-                <div>
-                    <span class="block text-500 font-medium mb-3">Customers</span>
-                    <div class="text-900 font-medium text-xl">28441</div>
-                </div>
-                <div class="flex align-items-center justify-content-center bg-cyan-100 border-round"
-                    [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
-                    <i class="pi pi-inbox text-cyan-500 text-xl"></i>
-                </div>
+                <span>Lowest price</span>
+                <div style="text-align:end"><b>{{crypto.atl | currency:'':'':'.0-10'}}</b></div>
+                <div style="text-align:end"><b>{{crypto.atl_date | date:'mediumDate'}}</b></div>
             </div>
-            <span class="text-green-500 font-medium">520 </span>
-            <span class="text-500">newly registered</span>
-
-            <p-divider></p-divider>
+            <div class="flex justify-content-between mb-3">
+                <span>Highest date</span>
+                <div style="text-align:end"><b>{{crypto.ath | currency:'':'':'.0-10'}}</b></div>
+                <div style="text-align:end"><b>{{crypto.ath_date | date:'mediumDate'}}</b></div>
+            </div>
+            <br>
             <div class="mb-3">
-                <p style="text-align: center;">life range</p>
+                <div style="text-align:center"><b>{{valueProgressBarLife | number:'.1-2'}}%</b></div>
                 <p-progressBar [style]="{ height: '10px' }" [value]="valueProgressBarLife"
                     [showValue]="false"></p-progressBar>
-                <p style="float: left">Low life: <b>{{crypto.atl | currency:'
-                        ':'':'.0-10'}}</b></p>
-                <p style="float: right">High life: <b>{{crypto.ath | currency:'
-                        ':'':'.0-10'}}</b></p>
+                <p style="float: left">Lowest price: <b>{{crypto.atl | currency:'':'':'.0-10'}}</b></p>
+                <p style="float: right">Highest price: <b>{{crypto.ath | currency:'':'':'.0-10'}}</b></p>
             </div>
+
+            <p-divider align="center">
+                links
+            </p-divider>
+
+            <li *ngFor="let home of homepage; index as i; first as isFirst">
+                <span *ngIf="isFirst">default</span>
+
+                <a href="{{home}}" target="_blank" pTooltip="{{home}}"><p-button label="Homepage {{i+1}}"
+                        styleClass="p-button-outlined p-button-info"></p-button></a>
+
+            </li>
+
         </div>
     </div>
 

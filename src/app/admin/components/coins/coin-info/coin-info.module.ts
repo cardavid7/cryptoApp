@@ -9,6 +9,7 @@ import { DividerModule } from 'primeng/divider';
 import { ChipModule } from 'primeng/chip';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
     imports: [
@@ -20,7 +21,8 @@ import { ButtonModule } from 'primeng/button';
         DividerModule,
         ChipModule,
         DialogModule,
-        ButtonModule
+        ButtonModule,
+        TooltipModule
     ],
     declarations: [CoinInfoComponent]
 })
