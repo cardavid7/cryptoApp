@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { map, Observable, catchError, throwError } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { Observable, catchError, throwError } from "rxjs";
+import { environment } from "../../../../environments/environment";
 import { Exchange } from "../../api/coinGecko/exchange";
 
 @Injectable()
 export class ExchangeService {
 
-    private url: string = "https://api.coingecko.com/api/v3";
+    private url: string = environment.coinGecko.baseUrl;
     private exchanges: string = "/exchanges";
 
     constructor(private http: HttpClient) { }
@@ -15,7 +16,10 @@ export class ExchangeService {
 
         return this.http.get<Exchange[]>(this.url + this.exchanges).pipe(
             catchError(error => {
-                return throwError(() => "Service error, please try again later.");
+                const status = (error as { status?: number })?.status;
+                return throwError(() => status === 429
+                    ? "CoinGecko rate limit reached. Please wait a moment and try again."
+                    : "Service error, please try again later.");
             })
         )
 

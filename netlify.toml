@@ -1,0 +1,23 @@
+# Netlify build configuration.
+#
+# The Angular 21 build uses the `@angular/build:application` builder, which
+# emits the site into `dist/crypto-app/browser` (note the extra `browser`
+# folder) instead of `dist/crypto-app` like the old webpack builder did.
+# If the Netlify site's "Publish directory" is still set to `dist/crypto-app`
+# the deploy will serve nothing — this file overrides it.
+
+[build]
+  command = "npm run build"
+  publish = "dist/crypto-app/browser"
+
+# Optional: give the app a CoinGecko Demo API key so the coin list stops
+# hitting the keyless rate limit (HTTP 429). Create a free key at
+# https://www.coingecko.com/en/api, add it as a Netlify environment variable,
+# and read it in src/environments/environment.prod.ts.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

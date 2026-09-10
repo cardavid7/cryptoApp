@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  coinGecko: {
+    baseUrl: 'https://api.coingecko.com/api/v3',
+    // Optional free CoinGecko "Demo" API key (https://www.coingecko.com/en/api).
+    // Without a key the public API is limited to ~5-15 requests/minute per IP
+    // and frequently returns HTTP 429, which is why the coin list sometimes
+    // fails to load. With a Demo key you get ~30 req/min on a private quota.
+    // Prefer setting it via the CG_DEMO_API_KEY build-time replacement rather
+    // than committing a real key.
+    demoApiKey: '',
+  },
 };
 
 /*
