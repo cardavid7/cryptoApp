@@ -97,4 +97,23 @@ export class LayoutService {
         this.configUpdate.next(this.config);
     }
 
+    /**
+     * Applies the current colorScheme by toggling the `.app-dark` class on the
+     * document element, which PrimeNG's `darkModeSelector` is bound to.
+     */
+    applyColorScheme() {
+        const root = document.documentElement;
+        if (this.config.colorScheme === 'dark') {
+            root.classList.add('app-dark');
+        } else {
+            root.classList.remove('app-dark');
+        }
+    }
+
+    toggleColorScheme() {
+        this.config.colorScheme = this.config.colorScheme === 'dark' ? 'light' : 'dark';
+        this.applyColorScheme();
+        this.onConfigUpdate();
+    }
+
 }
