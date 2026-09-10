@@ -12,13 +12,13 @@
         "noFallthroughCasesInSwitch": true,
         "sourceMap": true,
         "declaration": false,
-        "downlevelIteration": true,
+        "skipLibCheck": true,
+        "isolatedModules": true,
         "experimentalDecorators": true,
         "moduleResolution": "bundler",
         "importHelpers": true,
         "target": "ES2022",
         "module": "preserve",
-        "useDefineForClassFields": false,
         "lib": [
             "ES2022",
             "dom"
