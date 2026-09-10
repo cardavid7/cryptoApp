@@ -8,6 +8,7 @@ import { CryptoCurrencyService } from '../../../service/coinGecko/cryptocurrency
 @Component({
     selector: 'app-coininfo',
     templateUrl: './coin-info.component.html',
+    standalone: false
 })
 export class CoinInfoComponent implements OnInit {
 

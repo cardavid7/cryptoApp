@@ -4,6 +4,7 @@ import { CryptoCurrencyService } from '../../service/coinGecko/cryptocurrency.se
 
 @Component({
     templateUrl: './cryptocurrencies.component.html',
+    standalone: false
 })
 export class CryptoCurrenciesComponent implements OnInit {
 

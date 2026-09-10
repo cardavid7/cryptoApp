@@ -5,6 +5,7 @@ import { ExchangeService } from '../../service/coinGecko/exchange.service';
 
 @Component({
     templateUrl: './exchanges.component.html',
+    standalone: false
 })
 export class ExchangesComponent implements OnInit {
 
