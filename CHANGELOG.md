@@ -1,5 +1,17 @@
 # Changelog
 
+## 21.0.0
+**Migration Guide**
+- Upgrade Angular 15 -> 21 (stepwise: 16, 17, 18, 19, 21)
+- Upgrade PrimeNG 15 -> 21
+
+**Implemented New Features and Enhancements:**
+- PrimeNG theming migrated from bundled theme CSS (`primeng/resources` +
+  `<link id="theme-css">`) to the design-token engine (`@primeuix/themes`
+  Aura preset via `providePrimeNG`)
+- Build system moved to `@angular/build:application` (esbuild/Vite)
+- `npm audit`: 86 findings (2 critical, 54 high) -> 0
+
 ## 15.0.0
 **Migration Guide**
 - Upgrade to PrimeNG 15

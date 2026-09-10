@@ -1,8 +1,8 @@
 # CryptoApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) and currently runs on Angular 21.
 
-This project use [Sakai-ng](https://github.com/primefaces/sakai-ng) a free admin template for Angular with 15.1.0 version
+This project uses [Sakai-ng](https://github.com/primefaces/sakai-ng), a free admin template for Angular. The layout was originally based on the PrimeNG 15 version of the template and has since been migrated to PrimeNG 21 (design-token theming).
 
 ## Development server
 
