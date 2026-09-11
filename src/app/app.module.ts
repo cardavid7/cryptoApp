@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
@@ -17,6 +17,7 @@ import { ExchangeService } from './admin/service/coinGecko/exchange.service'
         AppLayoutModule
     ],
     providers: [
+        provideZoneChangeDetection({ eventCoalescing: true }),
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         providePrimeNG({
             ripple: true,
